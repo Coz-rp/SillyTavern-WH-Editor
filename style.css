@@ -1,0 +1,213 @@
+/* WH Editor: the same look as the Worldhopper Engine's panel, so the two sit together. */
+.wh-editor-settings {
+    --wh-accent: var(--SmartThemeQuoteColor, #e18a24);
+    --wh-line: var(--SmartThemeBorderColor, rgba(255, 255, 255, 0.15));
+}
+.wh-editor-settings .wh-body {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-top: 6px;
+}
+/* Tap-to-toggle pills: which checks run. */
+.wh-editor-settings .wh-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin: 6px 0;
+}
+.wh-editor-settings .wh-pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 2px 10px;
+    border-radius: 999px;
+    border: 1px solid var(--wh-line);
+    font-size: 0.88em;
+    cursor: pointer;
+    user-select: none;
+    opacity: 0.75;
+    transition: background 0.12s, border-color 0.12s, opacity 0.12s;
+}
+.wh-editor-settings .wh-pill input { display: none; }
+.wh-editor-settings .wh-pill:has(input:checked) {
+    opacity: 1;
+    border-color: var(--wh-accent);
+    background: color-mix(in srgb, var(--wh-accent) 22%, transparent);
+}
+.wh-editor-settings .wh-status {
+    display: flex;
+    flex-direction: column;
+    opacity: 0.55;
+    font-size: 0.85em;
+    padding: 0 2px;
+}
+.wh-editor-settings .wh-status small:empty { display: none; }
+
+/* Header and card titles */
+.wh-editor-settings .wh-brand i {
+    margin-right: 4px;
+    background: linear-gradient(135deg, #ff5d8f, #b27eff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+.wh-editor-settings .wh-section {
+    margin-top: 10px;
+    padding: 8px 10px 10px;
+    border: 1px solid var(--wh-line);
+    border-radius: 10px;
+    background: var(--black30a, rgba(0, 0, 0, 0.15));
+}
+.wh-editor-settings .wh-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0 0 6px;
+    font-weight: 600;
+    font-size: 0.95em;
+}
+.wh-editor-settings .wh-group > i:first-child { width: 16px; text-align: center; color: var(--wh-accent) !important; }
+.wh-editor-settings .wh-group .wh-help-toggle { margin-left: auto; font-weight: 400; }
+.wh-editor-settings .wh-tip {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin: 2px 0 6px;
+    padding: 6px 9px;
+    border-radius: 8px;
+    border: 1px solid color-mix(in srgb, var(--wh-accent) 45%, transparent);
+    background: color-mix(in srgb, var(--wh-accent) 10%, transparent);
+    font-size: 0.85em;
+    line-height: 1.3;
+}
+.wh-editor-settings .wh-tip > i { margin-top: 2px; color: var(--wh-accent) !important; }
+.wh-editor-settings .wh-tip b { font-weight: 600; }
+.wh-editor-settings .wh-subhead {
+    margin: 10px 0 2px;
+    font-size: 0.75em;
+    opacity: 0.6;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Switches: a toggle with its name and a one-line explanation beside it. */
+.wh-editor-settings .wh-switch {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin: 0;
+    padding: 6px 6px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.12s;
+}
+.wh-editor-settings .wh-switch:hover { background: rgba(255, 255, 255, 0.04); }
+.wh-editor-settings .wh-switch > span { display: flex; flex-direction: column; min-width: 0; line-height: 1.25; }
+.wh-editor-settings .wh-switch b { font-weight: 500; }
+.wh-editor-settings .wh-switch small { margin-top: 2px; font-size: 0.8em; opacity: 0.62; }
+.wh-editor-settings .wh-switch input[type='checkbox'] {
+    width: 34px;
+    height: 20px;
+    margin: 1px 0 0;
+    border-radius: 999px;
+    outline: none;
+    border: 1px solid var(--wh-line);
+    background-color: rgba(255, 255, 255, 0.14);
+    box-shadow: none;
+    filter: none;
+    transform: none;
+    transition: background-color 0.15s, border-color 0.15s;
+}
+.wh-editor-settings .wh-switch input[type='checkbox']::before {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    clip-path: none;
+    box-shadow: none;
+    background: #f2eef0;
+    transform: translateX(-7px);
+    transition: transform 0.15s ease;
+}
+/* !important: some themes force their own colour onto checked boxes, which left the switches and icons mismatched. */
+.wh-editor-settings .wh-switch input[type='checkbox']:checked {
+    background-color: var(--wh-accent) !important;
+    border-color: var(--wh-accent) !important;
+}
+.wh-editor-settings .wh-switch input[type='checkbox']:checked::before { transform: translateX(7px); }
+.wh-editor-settings .wh-switch input[type='checkbox']:focus-visible { outline: 2px solid var(--wh-accent); outline-offset: 2px; }
+/* The on/off switch in the heading, just left of the drawer arrow. */
+.wh-editor-settings .wh-switch.wh-power { margin: 0 10px 0 auto; padding: 0; align-items: center; }
+.wh-editor-settings .wh-switch.wh-power:hover { background: none; }
+@media (prefers-reduced-motion: reduce) {
+    .wh-editor-settings .wh-switch input[type='checkbox'],
+    .wh-editor-settings .wh-switch input[type='checkbox']::before { transition: none; }
+}
+
+.wh-editor-settings .wh-field {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 8px 0 4px;
+}
+.wh-editor-settings .wh-field > span {
+    flex: 0 0 132px;
+    font-size: 0.9em;
+    opacity: 0.8;
+}
+.wh-editor-settings .wh-field select { margin: 0; flex: 1; min-width: 0; }
+.wh-editor-settings .wh-field.wh-stack {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 4px;
+}
+/* Stacked, the label sits above its box: the side-by-side label width would become its height. */
+.wh-editor-settings .wh-field.wh-stack > span { flex: none; display: flex; flex-direction: column; opacity: 1; font-size: 1em; }
+.wh-editor-settings .wh-field.wh-stack > span b { font-weight: 500; }
+.wh-editor-settings .wh-field.wh-stack > span small { font-size: 0.8em; opacity: 0.62; line-height: 1.25; }
+.wh-editor-settings .wh-wide-button {
+    width: fit-content;
+    margin: 8px 0 0;
+}
+.wh-editor-settings .wh-wide-button i { margin-right: 4px; }
+
+/* The ⟲ toggle only appears on messages that were actually changed (by this or the Worldhopper Engine). */
+.mes .wh-undo {
+    display: none;
+}
+.mes.wh-edited .wh-undo {
+    display: flex;
+}
+
+/* (?) help: a short how-to that opens under its heading on tap (tooltips don't exist on phones). */
+.wh-editor-settings .wh-help-toggle {
+    cursor: pointer;
+    opacity: 0.55;
+    font-size: 0.95em;
+    padding: 2px;
+    align-self: center;
+    text-transform: none;
+}
+.wh-editor-settings .wh-help-toggle:hover,
+.wh-editor-settings .wh-help-toggle.wh-on { opacity: 1; color: var(--wh-accent); }
+.wh-editor-settings .wh-group .wh-help-toggle { font-size: 1.15em; }
+.wh-editor-settings .wh-help {
+    display: none;
+    margin: 6px 0 4px;
+    padding: 6px 10px;
+    border-left: 2px solid var(--wh-accent);
+    border-radius: 0 6px 6px 0;
+    background: color-mix(in srgb, var(--wh-accent) 8%, transparent);
+    font-size: 0.86em;
+    line-height: 1.45;
+    opacity: 0.9;
+}
+.wh-editor-settings .wh-help.wh-open { display: block; }
+.wh-editor-settings .wh-help i { opacity: 0.8; }
+.wh-editor-settings .wh-warning {
+    margin: 6px 0;
+    padding: 5px 10px;
+    border-radius: 6px;
+    border: 1px solid color-mix(in srgb, var(--warning, #e0a030) 60%, transparent);
+    background: color-mix(in srgb, var(--warning, #e0a030) 10%, transparent);
+    font-size: 0.86em;
+}

@@ -1,0 +1,47 @@
+<div class="wh-editor-settings">
+    <div class="inline-drawer">
+        <div class="inline-drawer-toggle inline-drawer-header">
+            <b class="wh-brand"><i class="fa-solid fa-spell-check"></i> WH Editor</b>
+            <label class="wh-switch wh-power" for="whe_enabled" title="Editor on or off"><input type="checkbox" id="whe_enabled"></label>
+            <div class="inline-drawer-icon fa-solid fa-circle-chevron-down down"></div>
+        </div>
+        <div class="inline-drawer-content wh-body">
+            <div id="whe_off_note" class="wh-tip" style="display:none"><i class="fa-solid fa-power-off"></i><span><b>The Editor is off.</b> Replies come through untouched. ⟲ still works on replies it already fixed, and <b>Run on last reply</b> still runs it once.</span></div>
+
+            <section class="wh-section">
+                <div class="wh-group"><i class="fa-solid fa-microchip"></i><span>Model</span> <i class="wh-help-toggle fa-solid fa-circle-question" data-help="model" title="Which model to use" tabindex="0"></i></div>
+                <div class="wh-help" data-help="model">
+                    The Editor sends only the flagged lines to a model, through one of your connection profiles (plug menu → Connection Profile). The job is small, so a local model (KoboldCpp, Ollama…) or a cheap, fast API model from the Flash, Haiku or mini tier does it well and costs next to nothing.
+                </div>
+                <div class="wh-tip"><i class="fa-solid fa-bolt"></i><span><b>Fast and cheap:</b> use a local or budget model here, not your roleplay model.</span></div>
+                <div id="whe_no_profiles" class="wh-warning" style="display:none">No connection profiles yet. Save one in the plug menu (Connection Profile), then pick it here.</div>
+                <label class="wh-field wh-stack">
+                    <span><b>Editor model</b><small>Rewrites the lines the rule pass flags.</small></span>
+                    <select id="whe_profile" class="text_pole"></select>
+                </label>
+            </section>
+
+            <section class="wh-section">
+                <div class="wh-group"><i class="fa-solid fa-spell-check"></i><span>What it fixes</span> <i class="wh-help-toggle fa-solid fa-circle-question" data-help="fixes" title="How the Editor works" tabindex="0"></i></div>
+                <div class="wh-help" data-help="fixes">
+                    After each reply, a quick rule pass flags suspect lines and the model rewrites only those; nothing else in the reply changes. A rewrite that would add content, bring in another stock phrase, or leave a sentence cut off is refused. <i class="fa-solid fa-rotate-left"></i> in a message's menu switches between the original and the fixed version.
+                </div>
+                <div class="wh-pills">
+                    <label class="wh-pill" for="whe_chk_banlist" title="Stock phrases and common model tells"><input type="checkbox" id="whe_chk_banlist"><span>Stock phrases</span></label>
+                    <label class="wh-pill" for="whe_chk_contrast" title="&quot;Not X, but Y&quot; framing"><input type="checkbox" id="whe_chk_contrast"><span>Not X, but Y</span></label>
+                    <label class="wh-pill" for="whe_chk_staccato" title="Dialogue chopped into fragments"><input type="checkbox" id="whe_chk_staccato"><span>Chopped dialogue</span></label>
+                    <label class="wh-pill" for="whe_chk_fragments" title="Narration in sentence fragments"><input type="checkbox" id="whe_chk_fragments"><span>Fragments</span></label>
+                    <label class="wh-pill" for="whe_chk_hedges" title="Referent hedges like &quot;your — her — hand&quot;"><input type="checkbox" id="whe_chk_hedges"><span>Hedges</span></label>
+                    <label class="wh-pill" for="whe_chk_echo" title="Speech that echoes your words back"><input type="checkbox" id="whe_chk_echo"><span>Echoing you</span></label>
+                    <label class="wh-pill" for="whe_chk_repetition" title="Phrases repeated from recent replies"><input type="checkbox" id="whe_chk_repetition"><span>Repeats</span></label>
+                </div>
+                <label class="wh-field wh-stack">
+                    <span><b>Slop list</b><small>Phrases the Editor always fixes. One per line; # starts a comment.</small></span>
+                    <textarea id="whe_personal" class="text_pole textarea_compact" rows="4" placeholder="doesn't quite reach her eyes"></textarea>
+                </label>
+                <div id="whe_run" class="menu_button wh-wide-button" title="Run the Editor on the last reply now, even while it's off"><i class="fa-solid fa-wand-sparkles"></i> Run on last reply</div>
+            </section>
+            <div class="wh-status"><small id="whe_status"></small></div>
+        </div>
+    </div>
+</div>

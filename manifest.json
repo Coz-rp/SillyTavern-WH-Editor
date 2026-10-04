@@ -1,0 +1,14 @@
+{
+    "display_name": "WH Editor",
+    "loading_order": 151,
+    "requires": [],
+    "optional": [
+        "connection-manager"
+    ],
+    "js": "index.js",
+    "css": "style.css",
+    "author": "Coz + Claude",
+    "version": "1.1.0",
+    "description": "After each reply, a quick rule pass flags stock phrases, \"not X, but Y\" framing, chopped dialogue and other model tells, and a cheap model you pick rewrites only those lines. One tap brings the original back.",
+    "homePage": "https://github.com/Coz-rp/SillyTavern-WH-Editor"
+}
